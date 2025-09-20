@@ -1,3 +1,4 @@
 void chaines();
-void pointeur1();
-void pointeur2();
+void pointeurs1_main();
+void pointeurs2_main();
+void pointeurs3_main();

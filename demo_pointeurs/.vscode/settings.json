@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "pointeurs.h": "c",
+        "chrono": "c",
+        "stdlib.h": "c"
+    }
+}

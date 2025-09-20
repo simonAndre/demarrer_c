@@ -20,8 +20,8 @@ void afficher_valeur(void *ptr, char type) {
   }
 }
 
-void pointeur2() {
-  printf("*** pointeurs2 ***\n");
+void pointeurs2_main() {
+  printf("\n---- fonction pointeurs2_main ----\n");
   int a = 10;
   float b = 3.14;
   int *c=NULL;

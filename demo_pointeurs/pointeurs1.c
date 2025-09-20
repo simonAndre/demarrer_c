@@ -5,6 +5,7 @@
 #include "pointeurs.h"
 
 void chaines(){
+    printf("\n---- fonction chaines ----\n");
 	char mot1[20];
 	char mot2[20]="tot";
 	bool won=false;
@@ -18,11 +19,10 @@ void chaines(){
 			printf("GAGNE!\n");
 		}
 	} while (won==false);
-	
-
 }
 
-void pointeur1(){
+void pointeurs1_main(){
+    printf("\n---- fonction pointeurs1_main ----\n");
     int i=0,j=98;
     int *p=&j;
     printf("adresse de j: %i, valeur: %i\n",p,*p);

@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include "pointeurs.h"
+#include "pointeurs_struct.h"
 
 
 int main()
 {
-	pointeur1();
+	pointeurs1_main();
 	
-	pointeur2();
+	pointeurs2_main();
+	
+	pointeur_struct1_main();
+
+	pointeurs3_main();
 	
 	chaines();
 	

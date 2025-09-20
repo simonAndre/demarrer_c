@@ -1,0 +1,6 @@
+struct cellule
+{
+    int valeur;
+    struct cellule *suivant;
+};
+typedef struct cellule *liste;
