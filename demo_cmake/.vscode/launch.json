@@ -5,14 +5,14 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/hello.exe",
+            "program": "${workspaceFolder}/build/hello",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb.exe",
+            "miDebuggerPath": "/usr/sbin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

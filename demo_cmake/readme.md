@@ -3,43 +3,54 @@
 ce projet permet de valider et lancer la mise en place de l'utilisation de cmake sur vscode.
 Le projet C est très simple, il ne comporte que 2 fichiers de code. tous les fichiers de code doivent être déclarés dans le fichier CMakeLists.txt. Donc si on en rajoute, il faut mettre à jour ce fichier.
 
+CMake doit être vu comme un "générateur de builder" : CMake est cross-platform et génèrera un builder dans la plateforme de choix du développeur. Le développeur configurera l'utilisation de CMake à sa manière graçce à un fichier de presets (fichier json).
+
+ici, je décline 2 exemple d'utilisation basique de CMake: 
+ 
+1. pour windows en utilisant une plateforme de compilation fournit par l'émulation MinGW (ou MSYS2)
+2. pour linux en s'appuyant sur le bon vieux Makefile qui a largement fait ses preuves depuis les années 80.
+
+mais CMake peut être utilisé avec plein d'autres plateformes (Ninja, code::blocks....)
+
 ## prérequis: installation vscode et cmake
 
 sous windows: 
-1. Installer Visual Studio Code ---
+```powershell
+# 1. Installer Visual Studio Code ---
 Write-Host "Installation de Visual Studio Code..."
 winget install --id Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
 
-2. Installer CMake ---
+# 2. Installer CMake ---
 Write-Host "Installation de CMake..."
 winget install --id Kitware.CMake -e --accept-source-agreements --accept-package-agreements
 
-3. Installer 7-Zip (utile pour extraire MinGW) ---
+# 3. Installer 7-Zip (utile pour extraire MinGW) ---
 Write-Host "Installation de 7-Zip..."
 winget install --id 7zip.7zip -e --accept-source-agreements --accept-package-agreements
 
-4. Télécharger MinGW-w64 (WinLibs) ---
+# 4. Télécharger MinGW-w64 (WinLibs) ---
 Write-Host "Téléchargement de MinGW-w64 (WinLibs)..."
 $mingwUrl = "https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-17.0.6-11.0.1-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-17.0.6-mingw-w64ucrt-11.0.1-r1.7z"
 $zipPath = "$env:TEMP\mingw64.7z"
 Invoke-WebRequest -Uri $mingwUrl -OutFile $zipPath
 
-5. Extraire dans C:\mingw64 ---
+# 5. Extraire dans C:\mingw64 ---
 Write-Host "Extraction de MinGW-w64..."
 $destPath = "C:\mingw64"
 if (!(Test-Path $destPath)) { New-Item -Path $destPath -ItemType Directory }
 & "C:\Program Files\7-Zip\7z.exe" x $zipPath -o"$destPath" -y
 
-6. Ajouter MinGW-w64 au PATH ---
+# 6. Ajouter MinGW-w64 au PATH ---
 Write-Host "Configuration du PATH..."
 $mingwBin = "C:\mingw64\mingw64\bin"
 [System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";$mingwBin", [System.EnvironmentVariableTarget]::Machine)
 
-7. Vérification ---
+# 7. Vérification ---
 Write-Host "Vérification des installations..."
 cmd /c "gcc --version"
 cmd /c "cmake --version"
 cmd /c "code --version"
+```
 
 ## configuration de cmake pour ce projet
 
@@ -128,3 +139,14 @@ cmd /c "code --version"
 }
 ``` 
 ## utilisation de cmake
+
+### sous linux
+
+- pour builder et lancer : `cmake --build build && ./build/hello`
+- pour déboguer, utiliser vscode (cf plus haut)
+
+
+
+
+
+<a href="https://creativecommons.org">Demarrer_C</a> © 2025 by <a href="https://creativecommons.org">Simon ANDRE</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
