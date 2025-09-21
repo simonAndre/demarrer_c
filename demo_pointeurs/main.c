@@ -14,6 +14,8 @@ int main()
 	pointeurs3_main();
 	
 	chaines();
+
+
 	
 	printf("bye...\n\n");
 	return 0;

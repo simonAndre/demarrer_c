@@ -9,6 +9,7 @@ set(SRCS
 	pointeurs1.c
 	pointeurs2.c
 	pointeurs3.c
+	chaines.c
 	pointeurs_struct.c
 	liste_chainee.c
 	)

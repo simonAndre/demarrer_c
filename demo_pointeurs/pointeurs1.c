@@ -4,21 +4,35 @@
 #include <stdlib.h>
 #include "pointeurs.h"
 
-void chaines(){
-    printf("\n---- fonction chaines ----\n");
-	char mot1[20];
-	char mot2[20]="tot";
-	bool won=false;
-    printf("\nrepète tant que votre mot n'est pas : %s\n",mot2);
-	do {
-		printf("entrez un mot: ");
-		scanf("%s",mot1);
-		if(strcmp(mot1,mot2)==0) 
-		{
-			won=true;
-			printf("GAGNE!\n");
-		}
-	} while (won==false);
+
+void swap1(int i,int j){
+    int prov;
+    prov=i;
+    i=j;
+    j=prov;
+    printf("dans swap1: i=%d, j=%d\n",i,j);
+}
+void swap2(int *i,int *j){
+    int *prov=i;
+    i=j;
+    j=prov;
+    printf("dans swap2: i=%d, j=%d\n",*i,*j);
+}
+void swap3(int *i,int *j){
+    int prov=*i;
+    *i=*j;
+    *j=prov;
+    printf("dans swap3: i=%d, j=%d\n",*i,*j);
+}
+void swap(){
+    int i=2,j=3;
+    printf("\nswap de 2 variables. Avant: i=%d et j=%d\n",i,j);
+    swap1(i,j);
+    printf("après swap1: i=%d, j=%d\n",i,j);
+    swap2(&i,&j);
+    printf("après swap2: i=%d, j=%d\n\n",i,j);
+    swap3(&i,&j);
+    printf("après swap3: i=%d, j=%d\n\n",i,j);
 }
 
 void pointeurs1_main(){
@@ -44,9 +58,5 @@ void pointeurs1_main(){
         lettre++;
     }while (*lettre!='\0');
     
-    // char *mot;
-    char* mot = (char*)malloc(10 * sizeof(char));
-    printf("saisir un mot:\n");
-    scanf("%s",mot);
-    printf("->%s\n",mot);
+    swap();
 }
